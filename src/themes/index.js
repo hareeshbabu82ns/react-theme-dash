@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme } from "@mui/material";
 
 // assets
 // import cssCustomColors from "assets/scss/_themes-vars.module.scss";

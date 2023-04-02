@@ -12,14 +12,13 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterLuxon } from "@mui/x-date-pickers/AdapterLuxon";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import viteLogo from "/vite.svg";
-import reactLogo from "./assets/react.svg";
+import reactLogo from "assets/react.svg";
 import { useSelector } from "react-redux";
-import customTheme from "./themes";
-import ProtectedLayout from "./scenes/layout";
-import ThemePage from "./scenes/theme/ThemePage";
-import LoginPage from "./scenes/user/Login";
-import SignupPage from "./scenes/user/Signup";
+import customTheme from "themes";
+import ProtectedLayout from "scenes/layout";
+import ThemePage from "scenes/theme/ThemePage";
+import LoginPage from "scenes/user/Login";
+import SignupPage from "scenes/user/Signup";
 
 function App() {
   const themeState = useSelector((state) => state.theme);
@@ -72,14 +71,11 @@ const AppContents = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <a href="https://vitejs.dev" target="_blank">
-            <img src={viteLogo} className="logo" alt="Vite logo" />
-          </a>
-          <a href="https://reactjs.org" target="_blank">
+          <a href="https://reactjs.org" target="_blank" rel="noreferrer">
             <img src={reactLogo} className="logo react" alt="React logo" />
           </a>
         </Stack>
-        <Typography variant="h1">Vite + React</Typography>
+        <Typography variant="h1">React App</Typography>
         <Stack gap={2} justifyContent="center" alignItems="center">
           <Box maxWidth="250px">
             <Button
@@ -95,7 +91,7 @@ const AppContents = () => {
           </Typography>
         </Stack>
         <Typography variant="h5">
-          Click on the Vite and React logos to learn more
+          Click on the React logo to learn more
         </Typography>
       </Stack>
     </Container>

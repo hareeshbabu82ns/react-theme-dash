@@ -1,5 +1,9 @@
 ### Setup
 
+```sh
+yarn create react-app react-theme-dash
+```
+
 ### Packages
 
 ```sh
@@ -11,7 +15,7 @@ yarn add @mui/material @emotion/react @emotion/styled \
 
 yarn add @nivo/bar @nivo/core @nivo/geo @nivo/line @nivo/pie
 
-yarn add tslib @react-oauth/google
+yarn add @react-oauth/google
 ```
 
 ### Env Variables
@@ -19,5 +23,5 @@ yarn add tslib @react-oauth/google
 - from file `.env.local`
 
 ```
-VITE_APP_BASE_URL=http://localhost:5001
+REACT_APP_BASE_URL=http://localhost:5001
 ```
