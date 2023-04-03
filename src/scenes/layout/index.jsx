@@ -8,7 +8,7 @@ import Sidebar from "../../components/Sidebar";
 
 // import { useGetUserQuery } from "../../state/api";
 
-const drawerWidth = "250px";
+const drawerWidth = "300px";
 
 const Main = styled("main", {
   shouldForwardProp: (prop) => !["open", "isNonMobile"].includes(prop),

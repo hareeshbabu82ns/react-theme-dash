@@ -46,10 +46,10 @@ const PrintPaletteColors = () => {
         title="Error Tones"
       /> */}
       <PrintColorList palette={theme.palette.grey} title="Grey" />
-      <PrintColorList
+      {/* <PrintColorList
         palette={theme.palette.colors.neutralTones}
         title="Neutral"
-      />
+      /> */}
     </Box>
   );
 };

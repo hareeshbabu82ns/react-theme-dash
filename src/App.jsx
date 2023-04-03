@@ -3,18 +3,22 @@ import {
   Box,
   Button,
   Container,
-  CssBaseline,
+  // CssBaseline,
   Stack,
-  ThemeProvider,
+  // ThemeProvider,
   Typography,
 } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterLuxon } from "@mui/x-date-pickers/AdapterLuxon";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
+import ThemeModeProvider from "themes/m3/context/ThemeModeContext";
+import ThemeSchemeProvider from "themes/m3/context/ThemeSchemeContext";
+import M3ThemeProvider from "themes/m3/M3ThemeProvider";
+
 import reactLogo from "assets/react.svg";
-import { useSelector } from "react-redux";
-import customTheme from "themes";
+// import { useSelector } from "react-redux";
+// import customTheme from "themes";
 import ProtectedLayout from "scenes/layout";
 import ThemePage from "scenes/theme/ThemePage";
 import LoginPage from "scenes/user/Login";
@@ -22,35 +26,44 @@ import SignupPage from "scenes/user/Signup";
 import { useGetPostsQuery } from "services/posts";
 
 function App() {
-  const themeState = useSelector((state) => state.theme);
-  const theme = useMemo(
-    () =>
-      customTheme({
-        mode: themeState.mode,
-        baseColor: themeState.baseColor,
-        secondaryColor: themeState.secondaryColor,
-        tertiaryColor: themeState.tertiaryColor,
-        fontFamily: "Inter, sans-serif",
-      }),
-    [themeState]
-  );
+  // const themeState = useSelector((state) => state.theme);
+  // const theme = useMemo(
+  //   () =>
+  //     customTheme({
+  //       mode: themeState.mode,
+  //       baseColor: themeState.baseColor,
+  //       secondaryColor: themeState.secondaryColor,
+  //       tertiaryColor: themeState.tertiaryColor,
+  //       fontFamily: "Inter, sans-serif",
+  //     }),
+  //   [themeState]
+  // );
 
   return (
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <CssBaseline enableColorScheme />
-        <LocalizationProvider dateAdapter={AdapterLuxon}>
-          <Routes>
-            <Route element={<ProtectedLayout />}>
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
-              <Route path="/dashboard" element={<AppContents />} />
-              <Route path="/theme" element={<ThemePage />} />
-            </Route>
-            <Route path="/signin" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-          </Routes>
-        </LocalizationProvider>
-      </ThemeProvider>
+      {/* <ThemeProvider theme={theme}>
+        <CssBaseline enableColorScheme /> */}
+      <ThemeModeProvider>
+        <ThemeSchemeProvider>
+          <M3ThemeProvider>
+            <LocalizationProvider dateAdapter={AdapterLuxon}>
+              <Routes>
+                <Route element={<ProtectedLayout />}>
+                  <Route
+                    path="/"
+                    element={<Navigate to="/dashboard" replace />}
+                  />
+                  <Route path="/dashboard" element={<AppContents />} />
+                  <Route path="/theme" element={<ThemePage />} />
+                </Route>
+                <Route path="/signin" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+              </Routes>
+            </LocalizationProvider>
+          </M3ThemeProvider>
+        </ThemeSchemeProvider>
+      </ThemeModeProvider>
+      {/* </ThemeProvider> */}
     </BrowserRouter>
   );
 }
