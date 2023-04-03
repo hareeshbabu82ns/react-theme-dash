@@ -1,4 +1,6 @@
 import { lighten, darken, alpha } from "@mui/material";
+import { generateThemeSchemeFromColors } from "./utils";
+import paletteGen from "../generate-material-palette";
 
 // interface M3Tone {
 //     0: string,
@@ -76,93 +78,105 @@ import { lighten, darken, alpha } from "@mui/material";
 //     tones?: M3ThemeTones
 // }
 
-export const DEFAULT_M3_THEME_SCHEME = {
-  // : M3ThemeScheme
-  light: {
-    primary: "#6750A4",
-    onPrimary: "#FFFFFF",
+// export const DEFAULT_M3_THEME_SCHEME = {
+//   // : M3ThemeScheme
+//   light: {
+//     primary: "#6750A4",
+//     onPrimary: "#FFFFFF",
 
-    primaryContainer: "#EADDFF",
-    onPrimaryContainer: "#21005E",
+//     primaryContainer: "#EADDFF",
+//     onPrimaryContainer: "#21005E",
 
-    secondary: "#9c27b0",
-    onSecondary: "#FFFFFF",
+//     secondary: "#9c27b0",
+//     onSecondary: "#FFFFFF",
 
-    secondaryContainer: "#E8DEF8",
-    onSecondaryContainer: "#1E192B",
+//     secondaryContainer: "#E8DEF8",
+//     onSecondaryContainer: "#1E192B",
 
-    tertiary: "#7D5260",
-    onTertiary: "#FFFFFF",
+//     tertiary: "#7D5260",
+//     onTertiary: "#FFFFFF",
 
-    tertiaryContainer: "#FFD8E4",
-    onTertiaryContainer: "#370B1E",
+//     tertiaryContainer: "#FFD8E4",
+//     onTertiaryContainer: "#370B1E",
 
-    error: "#B3261E",
-    onError: "#ffffff",
+//     error: "#B3261E",
+//     onError: "#ffffff",
 
-    errorContainer: "#F9DEDC",
-    onErrorContainer: "#370B1E",
+//     errorContainer: "#F9DEDC",
+//     onErrorContainer: "#370B1E",
 
-    background: "#FFFBFE",
-    onBackground: "#1C1B1F",
+//     background: "#FFFBFE",
+//     onBackground: "#1C1B1F",
 
-    surface: "#FFFBFE",
-    onSurface: "#1C1B1F",
+//     surface: "#FFFBFE",
+//     onSurface: "#1C1B1F",
 
-    surfaceVariant: "#E7E0EC",
-    onSurfaceVariant: "#49454E",
+//     surfaceVariant: "#E7E0EC",
+//     onSurfaceVariant: "#49454E",
 
-    inverseSurface: "#313033",
-    inverseOnSurface: "#F4EFF4",
+//     inverseSurface: "#313033",
+//     inverseOnSurface: "#F4EFF4",
 
-    inversePrimary: "#D0BCFF",
+//     inversePrimary: "#D0BCFF",
 
-    outline: "#79747E",
-    shadow: "#000000",
-  },
-  dark: {
-    primary: "#D0BCFF",
-    onPrimary: "#371E73",
+//     outline: "#79747E",
+//     shadow: "#000000",
+//   },
+//   dark: {
+//     primary: "#D0BCFF",
+//     onPrimary: "#371E73",
 
-    primaryContainer: "#4F378B",
-    onPrimaryContainer: "#EADDFF",
+//     primaryContainer: "#4F378B",
+//     onPrimaryContainer: "#EADDFF",
 
-    secondary: "#CCC2DC",
-    onSecondary: "#332D41",
+//     secondary: "#CCC2DC",
+//     onSecondary: "#332D41",
 
-    secondaryContainer: "#4A4458",
-    onSecondaryContainer: "#E8DEF8",
+//     secondaryContainer: "#4A4458",
+//     onSecondaryContainer: "#E8DEF8",
 
-    tertiary: "#EFB8C8",
-    onTertiary: "#492532",
+//     tertiary: "#EFB8C8",
+//     onTertiary: "#492532",
 
-    tertiaryContainer: "#633B48",
-    onTertiaryContainer: "#FFD8E4",
+//     tertiaryContainer: "#633B48",
+//     onTertiaryContainer: "#FFD8E4",
 
-    error: "#F2B8B5",
-    onError: "#601410",
+//     error: "#F2B8B5",
+//     onError: "#601410",
 
-    errorContainer: "#8C1D18",
-    onErrorContainer: "#F9DEDC",
+//     errorContainer: "#8C1D18",
+//     onErrorContainer: "#F9DEDC",
 
-    background: "#1C1B1F",
-    onBackground: "#E6E1E5",
+//     background: "#1C1B1F",
+//     onBackground: "#E6E1E5",
 
-    surface: "#1C1B1F",
-    onSurface: "#E6E1E5",
+//     surface: "#1C1B1F",
+//     onSurface: "#E6E1E5",
 
-    surfaceVariant: "#49454F",
-    onSurfaceVariant: "#CAC4D0",
+//     surfaceVariant: "#49454F",
+//     onSurfaceVariant: "#CAC4D0",
 
-    inverseSurface: "#E6E1E5",
-    inverseOnSurface: "#313033",
+//     inverseSurface: "#E6E1E5",
+//     inverseOnSurface: "#313033",
 
-    inversePrimary: "#6750A4",
+//     inversePrimary: "#6750A4",
 
-    outline: "#938F99",
-    shadow: "#000000",
-  },
+//     outline: "#938F99",
+//     shadow: "#000000",
+//   },
+// };
+
+export const DEFAULT_M3_THEME_SCHEME_COLORS = {
+  colorBase: "#6750A4",
+  secondaryColor: "#ff0000",
+  tertiaryColor: "#00ff00",
 };
+export const DEFAULT_M3_THEME_SCHEME = generateThemeSchemeFromColors(
+  DEFAULT_M3_THEME_SCHEME_COLORS.colorBase,
+  {
+    ...DEFAULT_M3_THEME_SCHEME_COLORS,
+  }
+);
 
 // declare module '@mui/material/styles/createPalette' {
 //     interface Palette {
@@ -250,12 +264,15 @@ export const DEFAULT_M3_THEME_SCHEME = {
 
 // (mode: M3ThemeMode, scheme: M3ColorTokens, tones?: M3ThemeTones) => ThemeOptions
 export const getDesignTokens = ({ mode, scheme, tones }) => {
+  const isDark = mode === "dark";
   return {
     palette: {
       mode,
+      isDark,
       primary: {
         main: scheme.primary,
         contrastText: scheme.onPrimary,
+        ...paletteGen({ hex: scheme.primary, isDark }),
       },
       onPrimary: {
         main: scheme.onPrimary,
@@ -272,6 +289,7 @@ export const getDesignTokens = ({ mode, scheme, tones }) => {
       secondary: {
         main: scheme.secondary,
         contrastText: scheme.onSecondary,
+        ...paletteGen({ hex: scheme.secondary, isDark }),
       },
       onSecondary: {
         main: scheme.onSecondary,
@@ -288,6 +306,7 @@ export const getDesignTokens = ({ mode, scheme, tones }) => {
       tertiary: {
         main: scheme.tertiary,
         contrastText: scheme.onTertiary,
+        ...paletteGen({ hex: scheme.tertiary, isDark }),
       },
       onTertiary: {
         main: scheme.onTertiary,
@@ -304,6 +323,7 @@ export const getDesignTokens = ({ mode, scheme, tones }) => {
       error: {
         main: scheme.error,
         contrastText: scheme.onError,
+        ...paletteGen({ hex: scheme.error, isDark }),
       },
       onError: {
         main: scheme.onError,

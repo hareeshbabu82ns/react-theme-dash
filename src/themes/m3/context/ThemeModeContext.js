@@ -6,7 +6,7 @@ import { createContext, useState, useEffect } from "react";
 //     resetThemeMode: () => void
 // };
 
-const DEFAULT_MODE = "light"; //: M3ThemeMode
+const DEFAULT_MODE = "dark"; //: M3ThemeMode
 const THEME_MODE_KEY = "ThemeMode";
 
 export const ThemeModeContext = createContext({
