@@ -23,8 +23,8 @@ prepare().then(() =>
     <React.StrictMode>
       <ReduxProvider store={store}>
         <GoogleOAuthProvider clientId="481898432716-im304rnmqv2128h01lt3tujcke23uve0.apps.googleusercontent.com">
-          {/* <App /> */}
-          <M3App />
+          <App />
+          {/* <M3App /> */}
         </GoogleOAuthProvider>
       </ReduxProvider>
     </React.StrictMode>

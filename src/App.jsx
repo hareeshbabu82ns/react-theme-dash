@@ -26,6 +26,7 @@ function App() {
   const theme = useMemo(
     () =>
       customTheme({
+        isMui: true,
         mode: themeState.mode,
         baseColor: themeState.baseColor,
         secondaryColor: themeState.secondaryColor,

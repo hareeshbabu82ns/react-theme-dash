@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+import { deepmerge } from "@mui/utils";
 
 // assets
 // import cssCustomColors from "assets/scss/_themes-vars.module.scss";
@@ -6,6 +7,8 @@ import { createTheme } from "@mui/material";
 // project imports
 import componentStyleOverrides from "./compStyleOverride";
 import themePalette from "./dynamic-palette";
+import { getDesignTokens, getThemedComponents } from "./m3";
+import { generateThemeSchemeFromColors } from "./m3/utils";
 import materialDynamicColors from "./material-dynamic-colors";
 import themeTypography from "./typography";
 
@@ -19,6 +22,28 @@ export const theme = (customization) => {
 
   const baseColor = customization.baseColor || "#130019";
 
+  if (customization.isMui) {
+    const themeScheme = generateThemeSchemeFromColors(baseColor, {
+      secondaryColor: customization.secondaryColor,
+      tertiaryColor: customization.tertiaryColor,
+    });
+    const designTokens = getDesignTokens({
+      mode: customization.mode,
+      scheme: themeScheme[customization.mode],
+      tones: themeScheme.tones,
+    });
+    let newM3Theme = createTheme(designTokens);
+    newM3Theme = deepmerge(newM3Theme, getThemedComponents(newM3Theme));
+
+    // document
+    //   .querySelector('meta[name="theme-color"]')
+    //   ?.setAttribute("content", themeScheme[customization.mode].surface);
+
+    console.log(newM3Theme);
+
+    return newM3Theme;
+  }
+  // if not MUI
   const colors = materialDynamicColors({
     seed: baseColor,
     isDark,
