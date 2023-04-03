@@ -96,6 +96,7 @@ const AppContents = () => {
         <Typography variant="h5">
           Click on the React logo to learn more
         </Typography>
+        <p>{JSON.stringify(data)}</p>
       </Stack>
     </Container>
   );

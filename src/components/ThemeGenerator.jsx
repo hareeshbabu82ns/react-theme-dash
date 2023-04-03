@@ -5,7 +5,7 @@ import SketchColorPicker from "./SketchColorPicker";
 import { useDispatch, useSelector } from "react-redux";
 import { setThemeColors } from "../state/themeSlice";
 import {
-  ColorizeOutlined as BaseColorIcon,
+  // ColorizeOutlined as BaseColorIcon,
   ColorLensOutlined,
 } from "@mui/icons-material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";

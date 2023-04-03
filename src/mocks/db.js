@@ -3,11 +3,16 @@ import { nanoid } from "@reduxjs/toolkit";
 import { rest } from "msw";
 
 const db = factory({
+  user: { _id: primaryKey(String), name: String, ocupation: String },
   post: {
     id: primaryKey(String),
     name: String,
   },
 });
+
+[{ _id: "test_user", name: "John Doe", ocupation: "Developer" }].forEach(
+  (user) => db.user.create({ ...user })
+);
 
 [
   "A sample post",

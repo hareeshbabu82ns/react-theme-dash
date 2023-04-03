@@ -13,10 +13,10 @@ import Container from "@mui/material/Container";
 import { useTheme } from "@mui/material";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useUserSignupMutation } from "../../state/api";
+import { useUserSignupMutation } from "state/api";
 import { useDispatch } from "react-redux";
 
-import { setUser } from "../../state/globalSlice";
+import { setUser } from "state/globalSlice";
 
 function Copyright(props) {
   return (
@@ -51,7 +51,7 @@ export default function SignUp() {
 
   const [searchParams] = useSearchParams();
 
-  const [signUp, { isLoading }] = useUserSignupMutation();
+  const [signUp] = useUserSignupMutation();
 
   const [formData, setFormData] = React.useState(initFormData);
 

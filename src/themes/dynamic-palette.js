@@ -1,9 +1,9 @@
 import { darken, lighten } from "@mui/material";
 import tinycolor from "tinycolor2";
 import {
-  lightBlue as primary,
-  teal as secondary,
-  lightGreen as tertiary,
+  // lightBlue as primary,
+  // teal as secondary,
+  // lightGreen as tertiary,
   grey,
   green as success,
   blue as info,
@@ -12,7 +12,7 @@ import {
 } from "@mui/material/colors";
 
 import paletteGen from "./generate-material-palette";
-import { reverseColorPalette, toneByMode } from "./utils";
+import { reverseColorPalette } from "./utils";
 
 const GREY_DARK = reverseColorPalette({
   colorPalette: grey,

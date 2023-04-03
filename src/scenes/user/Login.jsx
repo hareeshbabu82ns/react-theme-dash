@@ -30,7 +30,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
 
-  const [signIn, { isLoading }] = useUserSigninMutation();
+  const [signIn] = useUserSigninMutation();
   const [googleSignIn] = useUserGoogleSigninMutation();
 
   const [email, setEmail] = useState("");

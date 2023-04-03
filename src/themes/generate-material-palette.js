@@ -1,7 +1,7 @@
 import coloringPalette, { generateMaterialUIPalette } from "coloring-palette";
 import tinycolor from "tinycolor2";
 
-import { hexToHSL, hexToHsv, hslToHex } from "./utils";
+import { hexToHSL, hslToHex } from "./utils";
 
 /**
  * Minimize the maximum possible loss

@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import {
-  SettingsOutlined,
+  // SettingsOutlined,
   ChevronLeft,
   ChevronRightOutlined,
   HomeOutlined,
@@ -14,7 +14,7 @@ import {
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
   PieChartOutlined,
-  CurrencyRupeeOutlined,
+  // CurrencyRupeeOutlined,
   ColorLensOutlined as ThemeSettingsOutlinedIcon,
 } from "@mui/icons-material";
 import FlexBetween from "./FlexBetween";
