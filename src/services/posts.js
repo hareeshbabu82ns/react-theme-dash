@@ -1,10 +1,9 @@
-import { api } from "../../state/api";
+import { api } from "state/api";
 
-export const apiPost = api.injectSplitApi({
-  tagTypes: ["Post"],
+export const apiPost = api.injectEndpoints({
   endpoints: (build) => ({
     getPosts: build.query({
-      query: () => "posts",
+      query: () => "/api/posts",
       providesTags: (result) =>
         result
           ? [
@@ -15,19 +14,19 @@ export const apiPost = api.injectSplitApi({
     }),
     addPost: build.mutation({
       query: (body) => ({
-        url: `posts`,
+        url: `/api/posts`,
         method: "POST",
         body,
       }),
       invalidatesTags: [{ type: "Post", id: "LIST" }],
     }),
     getPost: build.query({
-      query: (id) => `posts/${id}`,
+      query: (id) => `/api/posts/${id}`,
       providesTags: (result, error, id) => [{ type: "Post", id }],
     }),
     updatePost: build.mutation({
       query: ({ id, ...patch }) => ({
-        url: `posts/${id}`,
+        url: `/api/posts/${id}`,
         method: "PUT",
         body: patch,
       }),
@@ -36,7 +35,7 @@ export const apiPost = api.injectSplitApi({
     deletePost: build.mutation({
       query(id) {
         return {
-          url: `posts/${id}`,
+          url: `/api/posts/${id}`,
           method: "DELETE",
         };
       },

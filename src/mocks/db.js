@@ -18,7 +18,18 @@ const db = factory({
 });
 
 export const handlers = [
-  rest.post("/posts", async (req, res, ctx) => {
+  rest.get("/api/posts", async (req, res, ctx) => {
+    const posts = db.post.findMany({});
+
+    return res(ctx.json(posts), ctx.delay(300));
+  }),
+  rest.get("/api/posts/:id", async (req, res, ctx) => {
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+    const post = db.post.findFirst({ id });
+
+    return res(ctx.json(post), ctx.delay(300));
+  }),
+  rest.post("/api/posts", async (req, res, ctx) => {
     const { name } = req.json();
 
     if (Math.random() < 0.3) {
@@ -36,7 +47,7 @@ export const handlers = [
 
     return res(ctx.json(post), ctx.delay(300));
   }),
-  rest.put("/posts/:id", (req, res, ctx) => {
+  rest.put("/api/posts/:id", (req, res, ctx) => {
     const { name } = req.json();
 
     if (Math.random() < 0.3) {

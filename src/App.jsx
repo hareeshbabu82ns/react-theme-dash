@@ -19,6 +19,7 @@ import ProtectedLayout from "scenes/layout";
 import ThemePage from "scenes/theme/ThemePage";
 import LoginPage from "scenes/user/Login";
 import SignupPage from "scenes/user/Signup";
+import { useGetPostsQuery } from "services/posts";
 
 function App() {
   const themeState = useSelector((state) => state.theme);
@@ -56,6 +57,8 @@ function App() {
 
 const AppContents = () => {
   const [count, setCount] = useState(0);
+
+  const { data } = useGetPostsQuery();
 
   return (
     <Container>

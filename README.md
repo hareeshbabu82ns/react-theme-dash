@@ -16,6 +16,8 @@ yarn add @mui/material @emotion/react @emotion/styled \
 yarn add @nivo/bar @nivo/core @nivo/geo @nivo/line @nivo/pie
 
 yarn add @react-oauth/google
+
+yarn add framer-motion msw @mswjs/data
 ```
 
 ### Env Variables
