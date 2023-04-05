@@ -97,15 +97,15 @@ function SketchColorPicker({
             <Stack justifyContent="center" alignItems="center">
               <Stack gap={1} direction="row">
                 {colorKey && (
-                  <Typography variant="h5" sx={{ color: textColor }}>
+                  <Typography variant="body1" sx={{ color: textColor }}>
                     {colorKey}
                   </Typography>
                 )}
-                <Typography variant="h4" sx={{ color: textColor }}>
+                <Typography variant="body1" sx={{ color: textColor }}>
                   {color}
                 </Typography>
               </Stack>
-              <Typography variant="body1" sx={{ color: textColor }}>
+              <Typography variant="body2" sx={{ color: textColor }}>
                 {hsvStr}
                 {/* {`H: ${h}, S: ${s}, V: ${v}`} */}
               </Typography>

@@ -1,7 +1,15 @@
-import { Box, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  Typography,
+} from "@mui/material";
 
 import BoxComponent from "./BoxComponent";
 import GpsFixedTwoTone from "@mui/icons-material/GpsFixed";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 
 const Buttons = () => {
   return (
@@ -96,6 +104,22 @@ const Buttons = () => {
         <Button variant="text" color="primary">
           Link
         </Button>
+      </BoxComponent>
+
+      <Typography variant="h6">CheckBoxs</Typography>
+      <BoxComponent>
+        <Checkbox
+          {...{ inputProps: { "aria-label": "Checkbox demo" } }}
+          icon={<FavoriteBorder />}
+          checkedIcon={<Favorite />}
+        />
+        <FormGroup>
+          <FormControlLabel
+            control={<Checkbox defaultChecked />}
+            label="Label"
+          />
+          <FormControlLabel disabled control={<Checkbox />} label="Disabled" />
+        </FormGroup>
       </BoxComponent>
     </Box>
   );

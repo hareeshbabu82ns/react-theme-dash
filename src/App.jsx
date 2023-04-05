@@ -19,6 +19,7 @@ import ProtectedLayout from "scenes/layout";
 import ThemePage from "scenes/theme/ThemePage";
 import LoginPage from "scenes/user/Login";
 import SignupPage from "scenes/user/Signup";
+import ComponentPage from "components/m3/pages/Components";
 import { useGetPostsQuery } from "services/posts";
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
             <Route element={<ProtectedLayout />}>
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<AppContents />} />
+              <Route path="/components" element={<ComponentPage />} />
               <Route path="/theme" element={<ThemePage />} />
             </Route>
             <Route path="/signin" element={<LoginPage />} />
@@ -66,7 +68,7 @@ const AppContents = () => {
     <Container>
       <Stack
         gap={2}
-        sx={{ height: "90vh", pt: "auto" }}
+        sx={{ height: "95vh", pt: "auto" }}
         justifyContent="center"
         alignItems="center"
       >

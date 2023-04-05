@@ -14,6 +14,7 @@ import {
   AdminPanelSettingsOutlined,
   TrendingUpOutlined,
   PieChartOutlined,
+  DnsOutlined,
   // CurrencyRupeeOutlined,
   ColorLensOutlined as ThemeSettingsOutlinedIcon,
 } from "@mui/icons-material";
@@ -96,6 +97,10 @@ const navItems = [
     to: "/theme",
   },
   {
+    text: "Components",
+    icon: <DnsOutlined />,
+  },
+  {
     text: "Performance",
     icon: <TrendingUpOutlined />,
   },
@@ -131,7 +136,7 @@ function Sidebar({
                 fontWeight="bold"
                 color={theme.palette.text.primary}
               >
-                ViteDash
+                M3Dash
               </Typography>
             </Box>
             {!isNonMobile && (

@@ -1,9 +1,10 @@
 import React from "react";
 import { Box, Stack } from "@mui/material";
 import Header from "../../components/Header";
-import PrintPaletteColors from "../../components/PrintPaletteColors";
+// import PrintPaletteColors from "../../components/PrintPaletteColors";
 import FlexBetween from "../../components/FlexBetween";
 import ThemeGenerator from "../../components/ThemeGenerator";
+import ColorSystem from "components/ColorSystem";
 
 const ThemePage = () => {
   return (
@@ -15,7 +16,9 @@ const ThemePage = () => {
       <Stack direction="column" gap={2}>
         <ThemeGenerator />
 
-        <PrintPaletteColors />
+        <ColorSystem />
+
+        {/* <PrintPaletteColors /> */}
       </Stack>
     </Box>
   );

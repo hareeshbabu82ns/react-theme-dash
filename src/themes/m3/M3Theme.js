@@ -2,175 +2,12 @@ import { lighten, darken, alpha } from "@mui/material";
 import { generateThemeSchemeFromColors } from "./utils";
 import paletteGen from "../generate-material-palette";
 
-// interface M3Tone {
-//     0: string,
-//     10: string,
-//     20: string,
-//     30: string,
-//     40: string,
-//     50: string,
-//     60: string,
-//     70: string,
-//     80: string,
-//     90: string,
-//     95: string,
-//     99: string,
-//     100: string
-// }
-// export interface M3ThemeTones {
-//     primary: M3Tone;
-//     secondary: M3Tone;
-//     tertiary: M3Tone;
-//     neutral: M3Tone;
-//     neutralVariant: M3Tone;
-//     error: M3Tone;
-// }
-
-// export interface M3ColorTokens {
-//     primary: string,
-//     onPrimary: string,
-
-//     primaryContainer: string,
-//     onPrimaryContainer: string,
-
-//     secondary: string,
-//     onSecondary: string,
-
-//     secondaryContainer: string,
-//     onSecondaryContainer: string,
-
-//     tertiary: string,
-//     onTertiary: string,
-
-//     tertiaryContainer: string,
-//     onTertiaryContainer: string,
-
-//     error: string,
-//     onError: string,
-
-//     errorContainer: string,
-//     onErrorContainer: string,
-
-//     background: string,
-//     onBackground: string,
-
-//     surface: string,
-//     onSurface: string,
-
-//     surfaceVariant: string,
-//     onSurfaceVariant: string,
-
-//     inverseSurface: string,
-//     inverseOnSurface: string,
-
-//     inversePrimary: string,
-//     surfaceTint?: string,
-
-//     outline: string,
-//     shadow: string,
-// }
-
-// export type M3ThemeMode = 'dark' | 'light';
-
-// export interface M3ThemeScheme {
-//     light: M3ColorTokens,
-//     dark: M3ColorTokens,
-//     tones?: M3ThemeTones
-// }
-
-// export const DEFAULT_M3_THEME_SCHEME = {
-//   // : M3ThemeScheme
-//   light: {
-//     primary: "#6750A4",
-//     onPrimary: "#FFFFFF",
-
-//     primaryContainer: "#EADDFF",
-//     onPrimaryContainer: "#21005E",
-
-//     secondary: "#9c27b0",
-//     onSecondary: "#FFFFFF",
-
-//     secondaryContainer: "#E8DEF8",
-//     onSecondaryContainer: "#1E192B",
-
-//     tertiary: "#7D5260",
-//     onTertiary: "#FFFFFF",
-
-//     tertiaryContainer: "#FFD8E4",
-//     onTertiaryContainer: "#370B1E",
-
-//     error: "#B3261E",
-//     onError: "#ffffff",
-
-//     errorContainer: "#F9DEDC",
-//     onErrorContainer: "#370B1E",
-
-//     background: "#FFFBFE",
-//     onBackground: "#1C1B1F",
-
-//     surface: "#FFFBFE",
-//     onSurface: "#1C1B1F",
-
-//     surfaceVariant: "#E7E0EC",
-//     onSurfaceVariant: "#49454E",
-
-//     inverseSurface: "#313033",
-//     inverseOnSurface: "#F4EFF4",
-
-//     inversePrimary: "#D0BCFF",
-
-//     outline: "#79747E",
-//     shadow: "#000000",
-//   },
-//   dark: {
-//     primary: "#D0BCFF",
-//     onPrimary: "#371E73",
-
-//     primaryContainer: "#4F378B",
-//     onPrimaryContainer: "#EADDFF",
-
-//     secondary: "#CCC2DC",
-//     onSecondary: "#332D41",
-
-//     secondaryContainer: "#4A4458",
-//     onSecondaryContainer: "#E8DEF8",
-
-//     tertiary: "#EFB8C8",
-//     onTertiary: "#492532",
-
-//     tertiaryContainer: "#633B48",
-//     onTertiaryContainer: "#FFD8E4",
-
-//     error: "#F2B8B5",
-//     onError: "#601410",
-
-//     errorContainer: "#8C1D18",
-//     onErrorContainer: "#F9DEDC",
-
-//     background: "#1C1B1F",
-//     onBackground: "#E6E1E5",
-
-//     surface: "#1C1B1F",
-//     onSurface: "#E6E1E5",
-
-//     surfaceVariant: "#49454F",
-//     onSurfaceVariant: "#CAC4D0",
-
-//     inverseSurface: "#E6E1E5",
-//     inverseOnSurface: "#313033",
-
-//     inversePrimary: "#6750A4",
-
-//     outline: "#938F99",
-//     shadow: "#000000",
-//   },
-// };
-
 export const DEFAULT_M3_THEME_SCHEME_COLORS = {
   colorBase: "#6750A4",
   secondaryColor: "#ff0000",
   tertiaryColor: "#00ff00",
 };
+
 export const DEFAULT_M3_THEME_SCHEME = generateThemeSchemeFromColors(
   DEFAULT_M3_THEME_SCHEME_COLORS.colorBase,
   {
@@ -178,92 +15,8 @@ export const DEFAULT_M3_THEME_SCHEME = generateThemeSchemeFromColors(
   }
 );
 
-// declare module '@mui/material/styles/createPalette' {
-//     interface Palette {
-//         //primary: string,
-//         onPrimary: PaletteColor,
-
-//         primaryContainer: PaletteColor,
-//         onPrimaryContainer: PaletteColor,
-
-//         //secondary: string,
-//         onSecondary: PaletteColor,
-
-//         secondaryContainer: PaletteColor,
-//         onSecondaryContainer: PaletteColor,
-
-//         tertiary: PaletteColor,
-//         onTertiary: PaletteColor,
-
-//         tertiaryContainer: PaletteColor,
-//         onTertiaryContainer: PaletteColor,
-
-//         //error: string,
-//         onError: PaletteColor,
-
-//         errorContainer: PaletteColor,
-//         onErrorContainer: PaletteColor,
-
-//         background2: PaletteColor,
-//         onBackground: PaletteColor,
-
-//         surface: PaletteColor,
-//         onSurface: PaletteColor,
-
-//         surfaceVariant: PaletteColor,
-//         onSurfaceVariant: PaletteColor,
-
-//         inverseSurface: PaletteColor,
-//         inverseOnSurface: PaletteColor,
-//         inversePrimary: PaletteColor,
-
-//         surfaceTint: string,
-
-//         outline: string,
-//         shadow: string,
-//     }
-// }
-// declare module '@mui/material/styles/createTheme' {
-//     interface ThemeOptions {
-//         tones?: M3ThemeTones
-//     }
-//     interface Theme {
-//         tones?: M3ThemeTones
-//     }
-// }
-// declare module '@mui/material/Button' {
-//     interface ButtonPropsVariantOverrides {
-//         elevated: true;
-//         filled: true;
-//         tonal: true;
-//     }
-//     interface ButtonPropsColorOverrides {
-//         tertiary: true;
-//         surface: true;
-//     }
-// }
-
-// declare module '@mui/material/Paper' {
-//     interface PaperPropsVariantOverrides {
-//         filled: true;
-//     }
-// }
-
-// declare module '@mui/material/Fab' {
-//     interface FabPropsVariantOverrides {
-//         primary: true;
-//         secondary: true;
-//         tertiary: true;
-//         surface: true;
-//     }
-//     interface FabPropsColorOverrides {
-//         tertiary: true,
-//         surface: true,
-//     }
-// }
-
 // (mode: M3ThemeMode, scheme: M3ColorTokens, tones?: M3ThemeTones) => ThemeOptions
-export const getDesignTokens = ({ mode, scheme, tones }) => {
+export const getDesignTokens = ({ mode, scheme, tones, customizations }) => {
   const isDark = mode === "dark";
   return {
     palette: {
@@ -389,8 +142,20 @@ export const getDesignTokens = ({ mode, scheme, tones }) => {
       shadow: scheme.shadow,
 
       background: {
-        default: scheme.background,
-        paper: scheme.surface,
+        // default: scheme.background,
+        // paper: scheme.surface,
+        default: isDark
+          ? darken(scheme.primary, 0.75)
+          : lighten(scheme.primary, 0.9),
+        paper: isDark
+          ? darken(scheme.primary, 0.75)
+          : lighten(scheme.primary, 0.9),
+        alt: isDark
+          ? darken(scheme.primary, 0.6)
+          : lighten(scheme.primary, 0.7),
+        tile: isDark
+          ? darken(scheme.primary, 0.65)
+          : lighten(scheme.primary, 0.75),
       },
       common: {
         white: scheme.background,
@@ -408,7 +173,8 @@ export const getDesignTokens = ({ mode, scheme, tones }) => {
 
 // returns { components: Theme["components"] }
 export const getThemedComponents = (
-  theme //: Theme
+  theme, //: Theme
+  customizations
 ) => {
   return {
     components: {
@@ -498,7 +264,8 @@ export const getThemedComponents = (
       MuiButton: {
         styleOverrides: {
           root: {
-            borderRadius: "50px",
+            // borderRadius: `${customizations?.radius || "10"}px`,
+            borderRadius: "4px",
             textTransform: "none",
             fontWeight: "bold",
           },
@@ -675,7 +442,7 @@ export const getThemedComponents = (
       MuiCard: {
         styleOverrides: {
           root: {
-            borderRadius: "20px",
+            borderRadius: `${customizations?.radius || "10"}px`,
             padding: "10px 8px",
           },
         },
@@ -733,17 +500,49 @@ export const getThemedComponents = (
         ],
       },
       MuiPaper: {
+        defaultProps: {
+          elevation: 0,
+        },
         styleOverrides: {
           root: {
-            background:
-              theme.palette.mode === "dark"
-                ? darken(theme.palette.primary.main, 0.9)
-                : lighten(theme.palette.primary.main, 0.9),
+            backgroundImage: "none",
+            // background:
+            //   theme.palette.mode === "dark"
+            //     ? darken(theme.palette.primary.main, 0.9)
+            //     : lighten(theme.palette.primary.main, 0.9),
             color: theme.palette.onSurface.main,
+          },
+          rounded: {
+            borderRadius: `${theme.customization?.borderRadius}px`,
           },
           outlined: {
             borderColor: theme.palette.outline,
             background: theme.palette.surface.main,
+          },
+        },
+      },
+      MuiCardHeader: {
+        styleOverrides: {
+          root: {
+            color: theme.palette.text.primary,
+            padding: "24px",
+          },
+          title: {
+            fontSize: "1.125rem",
+          },
+        },
+      },
+      MuiCardContent: {
+        styleOverrides: {
+          root: {
+            padding: "24px",
+          },
+        },
+      },
+      MuiCardActions: {
+        styleOverrides: {
+          root: {
+            padding: "24px",
           },
         },
       },
@@ -774,16 +573,50 @@ export const getThemedComponents = (
           },
         },
       },
+      // MuiListItemButton: {
+      //   styleOverrides: {
+      //     root: {
+      //       borderRadius: customizations?.radius || 10,
+      //       "&.Mui-selected": {
+      //         color: theme.palette.onSecondaryContainer.main,
+      //         background: theme.palette.secondaryContainer.main,
+      //         "& > .MuiListItemText-root > .MuiTypography-root": {
+      //           fontWeight: "bold",
+      //         },
+      //       },
+      //     },
+      //   },
+      // },
       MuiListItemButton: {
         styleOverrides: {
           root: {
-            borderRadius: 50,
+            color: theme.palette.text.primary,
+            // borderRadius: customizations?.radius || 10,
+            paddingTop: "10px",
+            paddingBottom: "10px",
             "&.Mui-selected": {
-              color: theme.palette.onSecondaryContainer.main,
               background: theme.palette.secondaryContainer.main,
+              color: theme.palette.onSecondaryContainer.main,
+              "&:hover": {
+                color: theme.palette.onSecondaryContainer.main,
+                background: alpha(theme.palette.secondaryContainer.main, 0.8),
+              },
+              "& .MuiListItemIcon-root": {
+                color: theme.palette.secondary.main,
+              },
               "& > .MuiListItemText-root > .MuiTypography-root": {
                 fontWeight: "bold",
               },
+            },
+            "&:hover": {
+              color: theme.palette.onSecondary.main,
+              background: alpha(theme.palette.secondary.main, 0.8),
+              "& .MuiListItemIcon-root": {
+                color: theme.palette.onSecondaryContainer.main,
+              },
+            },
+            "& .MuiListItemIcon-root": {
+              color: theme.palette.secondary.main,
             },
           },
         },
@@ -792,9 +625,98 @@ export const getThemedComponents = (
         styleOverrides: {
           root: {
             color: "inherit",
+            // color: theme.palette.text.primary,
             minWidth: 32,
             "&.Mui-selected": {
               fontWeight: "bold",
+            },
+          },
+        },
+      },
+      MuiListItemText: {
+        styleOverrides: {
+          primary: {
+            color: "inherit",
+          },
+        },
+      },
+      MuiInputBase: {
+        styleOverrides: {
+          input: {
+            color: theme.palette.onSurface.main,
+            "&::placeholder": {
+              color: theme.palette.secondary.main,
+              fontSize: "0.875rem",
+            },
+          },
+        },
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            // background: bgColor,
+            borderRadius: `${theme.customization?.borderRadius}px`,
+            "& .MuiOutlinedInput-notchedOutline": {
+              // borderColor: theme.palette.grey[400],
+              borderColor: theme.palette.outline,
+            },
+            "&:hover $notchedOutline": {
+              // borderColor: theme.palette.primary[700],
+              borderColor: alpha(theme.palette.outline, 0.8),
+            },
+            "&.MuiInputBase-multiline": {
+              padding: 1,
+            },
+          },
+          input: {
+            fontWeight: 500,
+            // background: bgColor,
+            padding: "15.5px 14px",
+            borderRadius: `${theme.customization?.borderRadius}px`,
+            "&.MuiInputBase-inputSizeSmall": {
+              padding: "10px 14px",
+              "&.MuiInputBase-inputAdornedStart": {
+                paddingLeft: 0,
+              },
+            },
+          },
+          inputAdornedStart: {
+            paddingLeft: 4,
+          },
+          notchedOutline: {
+            borderRadius: `${theme.customization?.borderRadius}px`,
+          },
+        },
+      },
+      MuiSlider: {
+        styleOverrides: {
+          root: {
+            "&.Mui-disabled": {
+              color: theme.palette.grey[300],
+            },
+          },
+          mark: {
+            backgroundColor: theme.palette.background.paper,
+            width: "4px",
+          },
+          valueLabel: {
+            color: theme.palette.primary[800],
+          },
+        },
+      },
+      MuiAvatar: {
+        styleOverrides: {
+          root: {
+            color: theme.palette.primary[200],
+            background: theme.palette.primary[500],
+          },
+        },
+      },
+      MuiChip: {
+        styleOverrides: {
+          root: {
+            "&.MuiChip-deletable .MuiChip-deleteIcon": {
+              color: "inherit",
             },
           },
         },
@@ -804,6 +726,26 @@ export const getThemedComponents = (
           tooltip: {
             background: theme.palette.secondaryContainer.main,
             color: theme.palette.secondaryContainer.contrastText,
+          },
+        },
+      },
+      MuiDataGrid: {
+        styleOverrides: {
+          root: {
+            "& .MuiToolbar-root > *": {
+              color: theme.palette.primaryContainer.contrastText,
+            },
+          },
+          virtualScroller: {
+            background: theme.palette.primaryContainer.main,
+          },
+          footerContainer: {
+            color: theme.palette.secondaryContainer.contrastText,
+            background: theme.palette.secondaryContainer.main,
+          },
+          columnHeaders: {
+            color: theme.palette.secondaryContainer.contrastText,
+            background: theme.palette.secondaryContainer.main,
           },
         },
       },

@@ -8,6 +8,7 @@ import M3App from "M3App";
 import "index.css";
 import "react-toastify/dist/ReactToastify.css";
 import store from "state/index";
+import { ToastContainer } from "react-toastify";
 // import { worker } from "./mocks/browser";
 
 function prepare() {
@@ -26,6 +27,7 @@ prepare().then(() =>
           <App />
           {/* <M3App /> */}
         </GoogleOAuthProvider>
+        <ToastContainer />
       </ReduxProvider>
     </React.StrictMode>
   )

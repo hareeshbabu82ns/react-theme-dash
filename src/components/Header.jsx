@@ -7,7 +7,7 @@ function Header({ title, subtitle }) {
   return (
     <Box>
       <Typography
-        variant="h2"
+        variant="h3"
         color={theme.palette.text.onDefaultSecondary}
         fontWeight="bold"
         sx={{ mb: "5px" }}

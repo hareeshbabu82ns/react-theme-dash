@@ -11,6 +11,7 @@ import { getDesignTokens, getThemedComponents } from "./m3";
 import { generateThemeSchemeFromColors } from "./m3/utils";
 import materialDynamicColors from "./material-dynamic-colors";
 import themeTypography from "./typography";
+import { reverseTokens } from "./utils";
 
 /**
  * Represent theme style and structure as per Material-UI
@@ -27,20 +28,25 @@ export const theme = (customization) => {
       secondaryColor: customization.secondaryColor,
       tertiaryColor: customization.tertiaryColor,
     });
+
+    const finalTones = !isDark
+      ? themeScheme.tones
+      : reverseTokens(themeScheme.tones);
+
     const designTokens = getDesignTokens({
       mode: customization.mode,
       scheme: themeScheme[customization.mode],
-      tones: themeScheme.tones,
+      tones: finalTones,
     });
+
     let newM3Theme = createTheme(designTokens);
     newM3Theme = deepmerge(newM3Theme, getThemedComponents(newM3Theme));
 
-    // document
-    //   .querySelector('meta[name="theme-color"]')
-    //   ?.setAttribute("content", themeScheme[customization.mode].surface);
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", themeScheme[customization.mode].surface);
 
-    console.log(newM3Theme);
-
+    // console.log(newM3Theme);
     return newM3Theme;
   }
   // if not MUI
