@@ -27,7 +27,7 @@ prepare().then(() =>
           <App />
           {/* <M3App /> */}
         </GoogleOAuthProvider>
-        <ToastContainer />
+        <ToastContainer style={{ width: "500px" }} />
       </ReduxProvider>
     </React.StrictMode>
   )

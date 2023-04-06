@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Box, styled, useMediaQuery } from "@mui/material";
+import { Box, styled, useMediaQuery, useTheme } from "@mui/material";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 import Navbar from "../../components/Navbar";
@@ -33,7 +33,9 @@ const Main = styled("main", {
 }));
 
 function ProtectedLayout() {
-  const isNonMobile = useMediaQuery("(min-width: 600px)");
+  const theme = useTheme();
+  const isNonMobile = useMediaQuery(theme.breakpoints.up("md"));
+  // const isNonMobile = useMediaQuery("(min-width: 600px)");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const location = useLocation();

@@ -220,7 +220,7 @@ function Sidebar({
   return (
     <Box
       component="nav"
-      sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+      sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
     >
       {!isNonMobile && (
         <Drawer

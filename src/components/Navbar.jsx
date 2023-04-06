@@ -23,6 +23,7 @@ import {
   styled,
   Toolbar,
   Typography,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { clearUserLocal } from "../utils";
@@ -76,6 +77,7 @@ const StyledMenu = styled((props) => (
 function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {
   const dispatch = useDispatch();
   const theme = useTheme();
+  const isNonMobile = useMediaQuery(theme.breakpoints.up("md"));
   const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -117,60 +119,61 @@ function Navbar({ user, isSidebarOpen, setIsSidebarOpen }) {
         </FlexBetween>
 
         {/* Right Side */}
+        <Box sx={{ display: isNonMobile ? "block" : "none" }}>
+          <FlexBetween gap="1.5rem">
+            <IconButton onClick={() => dispatch(setMode())}>
+              {theme.palette.isDark ? (
+                <DarkModeOutlined sx={{ fontSize: "25px" }} />
+              ) : (
+                <LightModeOutlined sx={{ fontSize: "25px" }} />
+              )}
+            </IconButton>
 
-        <FlexBetween gap="1.5rem">
-          <IconButton onClick={() => dispatch(setMode())}>
-            {theme.palette.isDark ? (
-              <DarkModeOutlined sx={{ fontSize: "25px" }} />
-            ) : (
-              <LightModeOutlined sx={{ fontSize: "25px" }} />
-            )}
-          </IconButton>
+            <SettingsDrawerButton />
 
-          <SettingsDrawerButton />
-
-          <FlexBetween>
-            <Button
-              onClick={handleUserProfileClick}
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                textTransform: "none",
-                gap: "1rem",
-              }}
-            >
-              <Box
-                component="img"
-                alt="profile"
-                src={user?.profilePic || profileImage}
-                height="40px"
-                width="40px"
-                borderRadius="50%"
-                sx={{ objectFit: "cover" }}
-              />
-              <Box textAlign="left">
-                <Typography fontWeight="bold" fontSize="0.8rem">
-                  {user.name}
-                </Typography>
-                <Typography fontSize="0.7rem">{user.occupation}</Typography>
-              </Box>
-              <ArrowDropDownOutlined
-                sx={{ color: theme.palette.secondary[900], fontSize: "25px" }}
-              />
-            </Button>
-            <StyledMenu
-              anchorEl={anchorEl}
-              open={isOpen}
-              onClose={handleUserProfileClose}
-            >
-              <MenuItem onClick={handleLogout}>
-                <ExitToAppOutlined />
-                Logout
-              </MenuItem>
-            </StyledMenu>
+            <FlexBetween>
+              <Button
+                onClick={handleUserProfileClick}
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  textTransform: "none",
+                  gap: "1rem",
+                }}
+              >
+                <Box
+                  component="img"
+                  alt="profile"
+                  src={user?.profilePic || profileImage}
+                  height="40px"
+                  width="40px"
+                  borderRadius="50%"
+                  sx={{ objectFit: "cover" }}
+                />
+                <Box textAlign="left">
+                  <Typography fontWeight="bold" fontSize="0.8rem">
+                    {user.name}
+                  </Typography>
+                  <Typography fontSize="0.7rem">{user.occupation}</Typography>
+                </Box>
+                <ArrowDropDownOutlined
+                  sx={{ color: theme.palette.secondary[900], fontSize: "25px" }}
+                />
+              </Button>
+              <StyledMenu
+                anchorEl={anchorEl}
+                open={isOpen}
+                onClose={handleUserProfileClose}
+              >
+                <MenuItem onClick={handleLogout}>
+                  <ExitToAppOutlined />
+                  Logout
+                </MenuItem>
+              </StyledMenu>
+            </FlexBetween>
           </FlexBetween>
-        </FlexBetween>
+        </Box>
       </Toolbar>
     </AppBar>
   );

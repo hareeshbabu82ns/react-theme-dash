@@ -1,4 +1,11 @@
-import { Box, Grid, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Grid,
+  ListItem,
+  ListItemText,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import tinycolor from "tinycolor2";
 import { toast } from "react-toastify";
 
@@ -39,7 +46,7 @@ const PaletteColorTones = () => {
             <Grid container columns={13} marginBottom={2}>
               {Object.entries(v).map(([k1, v1]) => {
                 return (
-                  <Grid item xs={4} md={3} xl={2} key={k1}>
+                  <Grid item xs={6} md={3} xl={1} key={k1}>
                     <ColorBox
                       title={k1}
                       path={`theme.tones.${k}.${k1}`}
@@ -78,7 +85,7 @@ const PaletteColorVariations = () => {
             <Grid container columns={18} marginBottom={2}>
               {Object.entries(theme.palette[k] || []).map(([k1, v1]) => {
                 return (
-                  <Grid item xs={9} md={6} xl={3} key={`p-${k1}`}>
+                  <Grid item xs={9} md={4} xl={2} xxl={1} key={`p-${k1}`}>
                     <ColorBox
                       title={k1}
                       path={`theme.palette.${k}.${k1}`}
@@ -135,7 +142,7 @@ const PrintPaletteColorVariations = ({ palette, title, getContrastText }) => {
       <Grid container columns={18} marginBottom={2}>
         {Object.entries(palette || []).map(([k1, v1]) => {
           return (
-            <Grid item xs={9} md={6} xl={3} key={`p-${k1}`}>
+            <Grid item xs={9} md={6} xl={2} key={`p-${k1}`}>
               <ColorBox
                 title={k1}
                 path={`theme.palette.${title}.${k1}`}
@@ -395,19 +402,30 @@ const ColorBox = ({
   displayColorSpace = "hsl", // none, hsl, hsv, rgb
 }) => {
   const tinyColor = tinycolor(color);
-  const colorStr =
+  const colorStr = (
     displayColorSpace === "none"
       ? ""
       : displayColorSpace === "hsl"
       ? tinyColor.toHslString()
       : displayColorSpace === "rgb"
       ? tinyColor.toRgbString()
-      : tinyColor.toHsvString();
+      : tinyColor.toHsvString()
+  ).replaceAll("%", "");
   const clipText = `${path || title}\n${color}\n${colorStr}`;
 
   const handleOnClick = () => {
     navigator.clipboard.writeText(clipText);
-    toast.info("Color details copied to Clipboard", {
+    const infoContent = (
+      <ListItem>
+        <ListItemText
+          primary="Color details copied to Clipboard"
+          secondary={<pre>{clipText}</pre>}
+        ></ListItemText>
+      </ListItem>
+    );
+
+    // toast.dismiss("col-key");
+    toast.info(infoContent, {
       toastId: "col-key",
       autoClose: true,
       closeOnClick: true,
