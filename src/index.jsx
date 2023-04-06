@@ -12,11 +12,11 @@ import { ToastContainer } from "react-toastify";
 // import { worker } from "./mocks/browser";
 
 function prepare() {
-  if (process.env.NODE_ENV === "development") {
-    const { worker } = require("./mocks/browser");
-    return worker.start();
-  }
-  return Promise.resolve();
+  // if (process.env.NODE_ENV === "development") {
+  const { worker } = require("./mocks/browser");
+  return worker.start();
+  // }
+  // return Promise.resolve();
 }
 
 prepare().then(() =>
